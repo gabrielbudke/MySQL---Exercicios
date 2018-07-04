@@ -7,4 +7,4 @@ SELECT
 FROM
 	pokemons
 ORDER BY 
-	ataque ASC;
+	ataque DESC;
