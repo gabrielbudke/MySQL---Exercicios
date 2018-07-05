@@ -1,5 +1,5 @@
 SELECT
-	AVG (especial_ataque)
+	AVG (especial_ataque) 'Média de Ataque'
 FROM
 	pokemons
 WHERE
