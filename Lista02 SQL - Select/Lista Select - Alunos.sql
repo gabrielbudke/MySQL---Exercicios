@@ -41,10 +41,49 @@ SELECT nome, nota_1, nota_2, nota_3, nota_4, (nota_1 + nota_2 + nota_3 + nota_4)
 		(nota_1 + nota_2 + nota_3 + nota_4)/4 = (SELECT MAX((nota_1 + nota_2 + nota_3 + nota_4)/4) FROM alunos);
 
 
+-- 14. Selecione o nome, média e caso a média for menor que 5 apresentar reprovado, caso for menor que 7
+-- apresentar em exame senão apresentar aprovado.
+-- Dica: buscar como fazer IF em sql.
 
 
+-- 15. Selecione o nome, nota 1, nota 2, nota 3, nota 4 com o menor média.
+SELECT nome, nota_1, nota_2, nota_3, nota_4, (nota_1 + nota_2 + nota_3 + nota_4)/4 'Média'
+	FROM alunos 
+		WHERE (nota_1 + nota_2 + nota_3 + nota_4)/4 = (SELECT MIN((nota_1 + nota_2 + nota_3 + nota_4)/4) FROM alunos);
 
+-- 16. Selecione a quantidade de alunos em que a média foi maior que 7
+SELECT COUNT(nome) FROM alunos WHERE (nota_1 + nota_2 + nota_3 + nota_4)/4 > 7;
 
+-- 17. Selecione o nome, nick do aluno que o nick contém 5 caracteres
+SELECT nome, nick FROM alunos WHERE LENGTH(nick) > 5;
+
+-- 18. Selecione o nome do aluno quando a cor for ouro ou amarelo-torrado e a média for maior que seis e meio.
+SELECT nome FROM alunos WHERE cor_preferida LIKE 'ouro' OR 'amarelo-torrado' AND (nota_1 + nota_2 + nota_3 + nota_4)/4 > 6.5;
+
+-- 19. Selecione o nome e o ano da data de nascimento.
+SELECT nome, DATE_FORMAT(data_nascimento, '%Y') FROM alunos;
+
+-- 20. Selecione o nick e o mês de nascimento quando o mês de nascimento for maior que 6.
+SELECT nick, DATE_FORMAT(data_nascimento, '%m') FROM alunos WHERE data_nascimento > 6;
+
+-- 21. Selecione a quantidade de pessoas que nasceram no ano de 1996
+SELECT COUNT(nome) FROM alunos WHERE DATE_FORMAT(data_nascimento, '%Y') = 1996;
+
+-- 22. Selecione a quantidade de pessoas que nasceram no dia dois do mês de fevereiro do ano 1964
+-- ou 1994.
+SELECT COUNT(nome) FROM alunos WHERE DATE_FORMAT(data_nascimento, '%d%m/%Y') = 1964-02-02;
+
+-- 23. Selecione o nick e a nota 4 do aluno que a nota 2 está entre 5.0 e 5.99.
+SELECT nick, nota_2, nota_4 FROM alunos WHERE nota_2 BETWEEN 5.0 AND 5.99;
+
+-- 24. Apresentar a média da aluna Josefina.
+SELECT nome, (nota_1 + nota_2 + nota_3 + nota_4)/4 'Média' FROM alunos ORDER BY nome ASC;
+
+-- 25. Apresentar nome, nick, nota 1, nota 2, nota 3, nota 4, quando o nome conter Justino e o signo começar com ‘A’.
+SELECT nome, nick, nota_1, nota_2, nota_3, nota_4 FROM alunos WHERE nome LIKE '%Justino%' AND signo LIKE 'A%';
+
+-- 26. Apresentar a média das médias.
+SELECT AVG (nota_1 + nota_2 + nota_3 + nota_4)/4 'Média da médias' FROM alunos;
 
 
 
