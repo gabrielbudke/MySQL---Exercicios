@@ -42,10 +42,31 @@ INSERT INTO caracteristicas (id_alunos, nome) VALUES
 ((SELECT id FROM alunos WHERE nome = 'Joaquim'),'Altruísta'),
 ((SELECT id FROM alunos WHERE nome = 'Sophia'),'Sensível');
 
+
+-- 1. Selecione o nome do aluno e as caracteristicas
 SELECT 
 	alunos.nome 'Alunos',
 	caracteristicas.nome 'Caracteristicas'
 FROM 
-	alunos
-JOIN caracteristicas 
+	caracteristicas
+JOIN alunos 
 	ON(caracteristicas.id_alunos = alunos.id);
+
+
+-- 2. Selecione a quantidade de alunos que que são altruístas;
+SELECT 
+	COUNT(alunos.nome) 'Qtd. Alunos',
+	caracteristicas.nome 'Caracteristicas'
+FROM 
+	caracteristicas
+JOIN alunos 
+	ON(caracteristicas.id_alunos = alunos.id)
+WHERE caracteristicas.nome LIKE 'Pontual';
+
+-- 3. Selecione a quantidade de alunos para cada categoria, agrupando pela categoria;
+SELECT 
+	COUNT(alunos.nome),
+	caracteristicas.nome
+FROM caracteristicas JOIN alunos ON(caracteristicas.id_alunos = alunos.id)
+GROUP BY caracteristicas.nome;
+
