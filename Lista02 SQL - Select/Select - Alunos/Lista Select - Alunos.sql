@@ -71,7 +71,8 @@ SELECT COUNT(nome) FROM alunos WHERE DATE_FORMAT(data_nascimento, '%Y') = 1996;
 
 -- 22. Selecione a quantidade de pessoas que nasceram no dia dois do mês de fevereiro do ano 1964
 -- ou 1994.
-SELECT COUNT(nome) FROM alunos WHERE DATE_FORMAT(data_nascimento, '%d%m/%Y') = 1964-02-02;
+SELECT COUNT(nome) FROM alunos WHERE DATE_FORMAT(data_nascimento, '%d%m/%Y') = 1964-02-02 
+								  OR DATE_FORMAT(data_nascimento, '%d%m/%Y') = 1994-02-02;
 
 -- 23. Selecione o nick e a nota 4 do aluno que a nota 2 está entre 5.0 e 5.99.
 SELECT nick, nota_2, nota_4 FROM alunos WHERE nota_2 BETWEEN 5.0 AND 5.99;
