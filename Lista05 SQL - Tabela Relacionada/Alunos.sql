@@ -67,6 +67,18 @@ WHERE caracteristicas.nome LIKE 'Pontual';
 SELECT 
 	COUNT(alunos.nome),
 	caracteristicas.nome
-FROM caracteristicas JOIN alunos ON(caracteristicas.id_alunos = alunos.id)
+FROM 
+	caracteristicas 
+JOIN alunos 
+	ON(caracteristicas.id_alunos = alunos.id)
 GROUP BY caracteristicas.nome;
+
+-- 4. Selecione as características da aluna Sophia.
+SELECT 
+	caracteristicas.nome'Caracteristicas da Sophia' 
+FROM 
+	caracteristicas 
+JOIN alunos 
+	ON(caracteristicas.id_alunos = alunos.id)
+WHERE alunos.nome LIKE 'Sophia';
 
