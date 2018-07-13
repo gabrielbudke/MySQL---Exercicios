@@ -7,7 +7,8 @@ CREATE TABLE alunos(
 CREATE TABLE caracteristicas (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	id_alunos INTEGER NOT NULL,
-	nome VARCHAR (50) NOT NULL
+	nome VARCHAR (50) NOT NULL,
+	FOREIGN KEY (id_alunos) REFERENCES alunos(id)
 );
 
 INSERT INTO alunos (nome, idade) VALUES 
